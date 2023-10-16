@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diablo 4 - Focus Farm - Temporada do Sangue</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      background-color: #333;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+    h2 {
+      background-color: #333;
+      font-size: 16px;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    label {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    #results {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 4px;
+    }
+    h2, h3 {
+      margin-top: 20px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    ul li {
+      background-color: #ddd;
+      margin: 8px 0;
+      padding: 10px;
+      text-align: center;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Diablo 4 - Busca de Itens Únicos - Temporada 2</h1>
+
+  <div class="container">
+    <label for="bossSelect">Escolha o chefe:</label>
+    <select id="bossSelect" onchange="searchDatabase()">
+      <option value="">Selecione...</option>
+      <!-- Opções de chefe serão preenchidas por JavaScript -->
+    </select>
+
+    <label for="classSelect">Escolha a classe:</label>
+    <select id="classSelect" onchange="searchDatabase()">
+      <option value="">Selecione...</option>
+      <!-- Opções de classe serão preenchidas por JavaScript -->
+    </select>
+
+    <label for="itemSearch">Pesquisar item:</label>
+    <input type="text" id="itemSearch" oninput="searchDatabase()">
+
+    <div id="results"></div>
+  </div>
+
+
+  <script>
+    const database = {
+        "Grigiore": {
+        "Mago": ["Staff of Lam Esen", "Iceheart Brasis", "Gloves of the Illuminator"],
+        "Bárbaro": ["Ramaladni's Magnum Opus", "Rage of Harrogath", "Ancients'Oath", "Battle Trance", "The Butcher's Cleaver"],
+        "Druida": ["Insatiable Fury", "Hunter's Zenith", "Waxing Gibbous", "The Butcher's Cleaver"],
+        "Necromante": ["Blood Artisan's Cuirass", "Howl from Below", "Greaves of the Empty  Tomb"],
+        "Renegado": ["Word of Hakan", "Grasp of Shadow", "Windforce"],
+        "Genérico": ["Penitent Greaves"]
+        },
+        "Varshan": {
+            "Mago": ["Staff of Endless Rage", "Esu's Heirloom", "Raiment of the Infinite"],
+            "Bárbaro": ["Fields of Crimson", "100,000 Steps", "Gohr's Devastating Grips"],
+            "Druida": ["Mad Wolf's Glee", "Vasily's Prayer", "Greatstaff of the Crone"],
+            "Necromante": ["Bloodless Scream", "Deathless Visage", "Deathspeaker's Pendant"],
+            "Renegado": ["Condemnation", "Eyes in the Dark", "Skyhunter"],
+            "Genérico": ["Frostburn", "Mother's Embrace"]
+        },
+        "Lord Zir": {
+            "Mago": ["Staff of Endless Rage", "Iceheart Brais", "Raiment of the Infinite", "Esadoras Overflowing Cameo"],
+            "Bárbaro": ["Ramaladnis Magnum Opus", "Rage of Harrogath", "Gohrs Devastating Grips", "Overkill", "The Butchers Cleaver"],
+            "Druida": ["Mad Wolf's Glee", "Vasily's Prayer", "Greatstaff of the Crone", "Fleshrender", "The Butchers Cleaver"],
+            "Necromante": ["Blood Artisans Cuirass", "Deathless Visage", "Greaves of the Empty Tomb", "Lidless Wall"],
+            "Renegado": ["Grasp of Shadow", "Eyes in the Dark", "Skyhunter", "Ashearas Khanjar"],
+            "Genérico": ["Penitent Greaves", "Razorplate", "Temerity"]
+        },
+        "Beast in Ice": {
+            "Mago": ["Staff of Lam Esen", "Esus Heirloom", "Gloves of the Illuminator", "The Oculus"],
+            "Bárbaro": ["Fields of Crimson", "100,000 Steps", "Ancients Oath", "Battle Trance", "Hellhammer"],
+            "Druida": ["Insatiable Fury", "Hunters Zenith", "Waxing Gibbous", "Storms Companion"],
+            "Necromante": ["Bloodless Scream", "Howl from Below", "Deathspeakers Pendant", "Ring of Mendeln"],
+            "Renegado": ["Condemnation", "Word of Hakan", "Windforce", "Eaglehorn"],
+            "Genérico": ["Frostburn", "Mothers Embrace", "Fists of Fate", "Tassets of the Dawning Sky"]
+        },
+        "Duriel": {
+            "Mago": ["Flamescar", "Blue Rose", "Ahavarion, Spear of Lycander (UBER)"],
+            "Bárbaro": ["Azurewrath", "Tuskhelm of Joritz the Mighty", "Doombringer (UBER)", "The Grandfather (UBER)"],
+            "Druida": ["Tempest Roar", "Dolmen Stone", "Ahavarion, Spear of Lycander (UBER)"],
+            "Necromante": ["Black River", "Blood Moon Breeches", "Doombringer (UBER)", "The Grandfather (UBER)"],
+            "Renegado": ["Cowl of the Nameless", "Scoundrels Leathers", "Doombringer (UBER)"],
+            "Genérico": ["Godslayer Crown", "Flickerstep", "Tibaults Will", "XFals Corroded Signet", "Soulbrand", "Banished Lords Talisman", "Melted Heart of Selig (UBER)", "Andariels Visage (UBER)", "Harlequin Crest (UBER)", "Ring of Starless Skies (UBER)"]
+        }
+    };
+
+    const bossSelect = document.getElementById('bossSelect');
+    const classSelect = document.getElementById('classSelect');
+    for (const boss in database) {
+      bossSelect.innerHTML += `<option value="${boss}">${boss}</option>`;
+    }
+    for (const cls in database[Object.keys(database)[0]]) {
+      classSelect.innerHTML += `<option value="${cls}">${cls}</option>`;
+    }
+
+    function searchDatabase() {
+      const selectedBoss = bossSelect.value;
+      const selectedClass = classSelect.value;
+      const itemQuery = document.getElementById('itemSearch').value.toLowerCase().trim();
+      let results = '';
+
+      if (selectedBoss) {
+        results += `<h2>${selectedBoss}</h2>`;
+        if (selectedClass) {
+          results += `<h3>${selectedClass}</h3><ul>`;
+          database[selectedBoss][selectedClass].forEach(item => {
+            if (item.toLowerCase().includes(itemQuery)) {
+              results += `<li>${item}</li>`;
+            }
+          });
+          results += `</ul>`;
+        } else {
+          for (const [className, items] of Object.entries(database[selectedBoss])) {
+            results += `<h3>${className}</h3><ul>`;
+            items.forEach(item => {
+              if (item.toLowerCase().includes(itemQuery)) {
+                results += `<li>${item}</li>`;
+              }
+            });
+            results += `</ul>`;
+          }
+        }
+      } else if (selectedClass) {
+        for (const [boss, classes] of Object.entries(database)) {
+          if (classes[selectedClass]) {
+            results += `<h2>${boss}</h2><h3>${selectedClass}</h3><ul>`;
+            classes[selectedClass].forEach(item => {
+              if (item.toLowerCase().includes(itemQuery)) {
+                results += `<li>${item}</li>`;
+              }
+            });
+            results += `</ul>`;
+          }
+        }
+      } else {
+        for (const [boss, classes] of Object.entries(database)) {
+          for (const [className, items] of Object.entries(classes)) {
+            items.forEach(item => {
+              if (item.toLowerCase().includes(itemQuery)) {
+                results += `<h2>${boss}</h2><h3>${className}</h3><ul><li>${item}</li></ul>`;
+              }
+            });
+          }
+        }
+      }
+
+      document.getElementById('results').innerHTML = results;
+    }
+  </script>
+<h2>Criado por ViktorKav para a Comunidade de Diablo 4</h2>
+</body>
+</html>
