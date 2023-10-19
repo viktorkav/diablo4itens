@@ -1,3 +1,42 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+  const toggleThemeButton = document.getElementById("toggleTheme");
+  const root = document.documentElement;
+
+  function updateButton(theme) {
+    if (theme === 'dark') {
+      toggleThemeButton.innerHTML = "🌞"; // Sol para tema claro
+    } else {
+      toggleThemeButton.innerHTML = "🌙"; // Lua para tema escuro
+    }
+  }
+
+  // Carregar tema salvo no localStorage, se houver
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme === 'dark') {
+    root.style.setProperty('--text-color', 'var(--text-color-dark)');
+    root.style.setProperty('--bg-color', 'var(--bg-color-dark)');
+    updateButton('dark');
+  } else {
+    updateButton('light');
+  }
+
+  toggleThemeButton.addEventListener("click", function() {
+    if (root.style.getPropertyValue('--text-color') === 'var(--text-color-dark)') {
+      root.style.setProperty('--text-color', 'var(--text-color-light)');
+      root.style.setProperty('--bg-color', 'var(--bg-color-light)');
+      localStorage.setItem('theme', 'light');
+      updateButton('light');
+    } else {
+      root.style.setProperty('--text-color', 'var(--text-color-dark)');
+      root.style.setProperty('--bg-color', 'var(--bg-color-dark)');
+      localStorage.setItem('theme', 'dark');
+      updateButton('dark');
+    }
+  });
+});
+
+
 const database = {
     "Grigiore": {
     "Mago": ["Staff of Lam Esen", "Iceheart Brais", "Gloves of the Illuminator"],
