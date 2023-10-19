@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function updateButton(theme) {
     if (theme === 'dark') {
-      toggleThemeButton.innerHTML = "🌞"; // Sol para tema claro
+      toggleThemeButton.innerHTML = "Claro"; // Sol para tema claro
     } else {
-      toggleThemeButton.innerHTML = "🌙"; // Lua para tema escuro
+      toggleThemeButton.innerHTML = "Escuro"; // Lua para tema escuro
     }
   }
 
