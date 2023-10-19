@@ -1,0 +1,136 @@
+body {
+    font-family: "Arial", sans-serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    background-color: #222; /* Cor de fundo escura */
+    color: #f58d0b; /* Cor de texto clara */
+  }
+  
+  h1 {
+    background-color: #333; /* Cor de fundo do cabeçalho */
+    color: #f58d0b; /* Cor do texto do cabeçalho */
+    padding: 10px 0;
+    text-align: center;
+    border: 1px solid;
+    border-color: #f58d0b;
+    border-radius: 1rem;
+    
+  }
+  .teste{
+    text-align: center;
+    border: 1px solid;
+    border-color: #f58d0b;
+    border-radius: 1rem;
+  }
+  .input-search {
+    background-color: aliceblue;
+  }
+  .container-lista {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #333; /* Cor de fundo do conteúdo */
+    border: 1px solid #333; /* Borda ao redor do conteúdo */
+    border-radius: 5px; /* Cantos arredondados */
+    max-height: 430px; /* Defina a altura máxima que desejar para a área de resultados */
+    overflow-y: auto;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #333; /* Cor de fundo do conteúdo */
+    border: 1px solid #333; /* Borda ao redor do conteúdo */
+    border-radius: 5px; /* Cantos arredondados */
+    border: 1px solid;
+    border-color: #f58d0b;
+    border-radius: 1rem;
+    }
+  
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #f58d0b; /* Cor do texto das labels */
+  }
+  
+  select, input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #333; /* Borda dos campos de seleção e entrada de texto */
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #333; /* Cor de fundo dos campos de seleção e entrada de texto */
+    color: #f58d0b; /* Cor do texto nos campos de seleção e entrada de texto */
+  }
+  
+  #results {
+    background-color: #333; /* Cor de fundo dos resultados */
+    border: 1px solid #333; /* Borda ao redor dos resultados */
+    padding: 20px;
+    border-radius: 4px;
+  }
+  
+  h2, h3 {
+    margin-top: 20px;
+    color: #f58d0b; /* Cor do texto dos títulos h2 e h3 */
+    text-align: center;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    background-color: #333; /* Cor de fundo dos itens da lista */
+    margin: 8px 0;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    color: #f58d0b; /* Cor do texto nos itens da lista */
+    cursor: pointer;
+  }
+  
+  #itemModal {
+    color: #f58d0b; /* Cor do texto no modal */
+    
+    border: 1px solid #333; /* Borda ao redor do modal */
+    transition: 0.3s;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    }
+
+    .modal-header {
+        background-color: #222;
+        color: #f58d0b;
+        border: none;
+      } 
+    .modal-generic {
+        color: #f58d0b;
+        background-color: #333;
+    }
+
+    .modal-title {
+        color: #f58d0b;
+         }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 62%;
+    left: 20%;
+    background-color: #333; /* Cor de fundo do rodapé */
+    color: #f58d0b; /* Cor do texto no rodapé */
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid;
+    border-color: #f58d0b;
+    border-radius: 1rem;
+  }
+
+  
